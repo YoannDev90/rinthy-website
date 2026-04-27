@@ -56,7 +56,7 @@ npm run dev
 ```bash
 npm run dev --host
 ```
-### Getting started (App development)
+## Getting started (App development)
 
 [Rinthy App Developement](https://github.com/imsawiq/Rinthy)
 
