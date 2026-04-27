@@ -33,11 +33,13 @@ It helps you manage your projects and check analytics right from your phone.
 - **RU/EN language support**
 - **Balance view**
 
-## Getting started (Local development)
+## Getting started (Web development)
 
 ### Requirements
 
 - Node.js
+- npm
+- CMD
 
 ### Install
 
@@ -50,6 +52,13 @@ npm install
 ```bash
 npm run dev
 ```
+# Host Info
+```bash
+npm run dev --host
+```
+## Getting started (App development)
+
+[Rinthy App Development](https://github.com/imsawiq/Rinthy)
 
 # Русский
 
@@ -93,14 +102,6 @@ npm install
 
 ```bash
 npm run dev
-```
-
-## Сборка Android (Capacitor)
-
-### Сборка web
-
-```bash
-npm run build
 ```
 
 # Italiano
