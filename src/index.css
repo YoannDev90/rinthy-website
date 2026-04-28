@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
   }
   body {
     font-family: 'Geist', system-ui, sans-serif;
@@ -12,6 +12,18 @@
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Respect prefers-reduced-motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -22,22 +34,48 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .glass {
     background: rgba(20, 20, 20, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.06);
   }
+
+  /* Low-end fallback: solid background, no blur */
+  .glass-simple {
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
   .glass-strong {
     background: rgba(20, 20, 20, 0.85);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
+
+  /* Low-end fallback for glass-strong */
+  .glass-strong-simple {
+    background: rgba(20, 20, 20, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
   .glow-green {
     box-shadow: 0 0 40px rgba(27, 217, 106, 0.15), 0 0 80px rgba(27, 217, 106, 0.05);
   }
+
   .glow-green-strong {
     box-shadow: 0 0 60px rgba(27, 217, 106, 0.2), 0 0 120px rgba(27, 217, 106, 0.1);
   }
+
+  /* Low-end: subtle or no glow */
+  .glow-green-subtle {
+    box-shadow: 0 0 12px rgba(27, 217, 106, 0.1);
+  }
+
+  .glow-green-strong-subtle {
+    box-shadow: 0 0 20px rgba(27, 217, 106, 0.15);
+  }
 }
+

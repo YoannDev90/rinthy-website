@@ -1,8 +1,8 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
-import type { Language } from "./translations";
-import { translations } from "./translations";
+import type { Language, Translations } from "./types";
+import { allTranslations } from "./languages";
 
-type TranslationValue = (typeof translations)[Language];
+type TranslationValue = Translations;
 
 interface I18nContextValue {
   lang: Language;
@@ -30,7 +30,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <I18nContext.Provider value={{ lang, setLang: changeLang, t: translations[lang] }}>
+    <I18nContext.Provider value={{ lang, setLang: changeLang, t: allTranslations[lang] }}>
       {children}
     </I18nContext.Provider>
   );

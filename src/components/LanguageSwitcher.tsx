@@ -1,5 +1,5 @@
 import { useI18n } from "../i18n/I18nContext";
-import type { Language } from "../i18n/translations";
+import type { Language } from "../i18n/types";
 
 const languages: { code: Language; label: string }[] = [
   { code: "en", label: "EN" },

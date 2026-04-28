@@ -12,7 +12,7 @@ import {
   Globe,
 } from "lucide-react";
 import { useI18n } from "../i18n/I18nContext";
-
+import { usePerformanceProfile } from "../hooks/usePerformanceProfile";
 
 const featureIcons = [
   FolderOpen,
@@ -25,7 +25,6 @@ const featureIcons = [
   Wallet,
   Globe,
 ];
-
 
 function FeatureCard({
   icon: Icon,
@@ -40,43 +39,46 @@ function FeatureCard({
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const { enableAnimations } = usePerformanceProfile();
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={enableAnimations ? { opacity: 0, y: 40 } : { opacity: 1, y: 0 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{
-        duration: 0.6,
-        delay: index * 0.08,
+        duration: enableAnimations ? 0.6 : 0.01,
+        delay: enableAnimations ? index * 0.08 : 0,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative p-6 rounded-2xl glass hover:bg-white/[0.03] transition-all duration-500 hover:-translate-y-1"
+      className="group relative p-6 rounded-2xl glass hover:bg-white/[0.03] transition-all duration-500"
     >
       <div className="mb-4 inline-flex items-center justify-center w-11 h-11 rounded-xl bg-modrinth-green/10 text-modrinth-green group-hover:bg-modrinth-green group-hover:text-modrinth-dark transition-all duration-300">
         <Icon size={20} strokeWidth={2} />
       </div>
       <h3 className="font-display font-semibold text-lg mb-2">{title}</h3>
       <p className="text-sm text-modrinth-muted leading-relaxed">{desc}</p>
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none border border-modrinth-green/20" />
+      {enableAnimations && (
+        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none border border-modrinth-green/20" />
+      )}
     </motion.div>
   );
 }
-
 
 export default function Features() {
   const { t } = useI18n();
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const { enableAnimations } = usePerformanceProfile();
 
   return (
     <section id="features" className="relative py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
+          initial={enableAnimations ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: enableAnimations ? 0.7 : 0.01, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass text-xs font-medium text-modrinth-green tracking-wide uppercase mb-5">
@@ -99,3 +101,4 @@ export default function Features() {
     </section>
   );
 }
+

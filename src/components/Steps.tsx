@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
 import { Download, LogIn, Rocket } from "lucide-react";
 import { useI18n } from "../i18n/I18nContext";
+import { usePerformanceProfile } from "../hooks/usePerformanceProfile";
 
 const stepIcons = [Download, LogIn, Rocket];
 
-
 export default function Steps() {
   const { t } = useI18n();
-  return (
+  const { enableAnimations } = usePerformanceProfile();
 
+  return (
     <section id="how-it-works" className="relative py-32 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={enableAnimations ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: enableAnimations ? 0.7 : 0.01, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-
           <span className="inline-block px-4 py-1.5 rounded-full glass text-xs font-medium text-modrinth-green tracking-wide uppercase mb-5">
             {t.steps.badge}
           </span>
@@ -28,7 +28,6 @@ export default function Steps() {
           <p className="text-modrinth-muted max-w-xl mx-auto text-lg">
             {t.steps.subtitle}
           </p>
-
         </motion.div>
 
         <div className="relative">
@@ -42,10 +41,10 @@ export default function Steps() {
               return (
                 <motion.div
                   key={s.step}
-                  initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+                  initial={enableAnimations ? { opacity: 0, x: isEven ? -40 : 40 } : { opacity: 1, x: 0 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: enableAnimations ? 0.7 : 0.01, ease: [0.22, 1, 0.36, 1] }}
                   className={`relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 ${
                     isEven ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
@@ -70,10 +69,10 @@ export default function Steps() {
                 </motion.div>
               );
             })}
-
           </div>
         </div>
       </div>
     </section>
   );
 }
+

@@ -1,13 +1,17 @@
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
+import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Features from "./components/Features";
-import Screenshots from "./components/Screenshots";
-import Steps from "./components/Steps";
-import TechStack from "./components/TechStack";
-import Footer from "./components/Footer";
+import DownloadSection from "./components/DownloadSection";
 import GradientOrbs from "./components/GradientOrbs";
+
+// Lazy-load below-the-fold sections to reduce initial bundle and rendering work
+const Features = lazy(() => import("./components/Features"));
+const Screenshots = lazy(() => import("./components/Screenshots"));
+const Steps = lazy(() => import("./components/Steps"));
+const TechStack = lazy(() => import("./components/TechStack"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
@@ -16,12 +20,23 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Features />
-        <Screenshots />
-        <Steps />
-        <TechStack />
+        <DownloadSection />
+        <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+          <Features />
+        </Suspense>
+        <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+          <Screenshots />
+        </Suspense>
+        <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+          <Steps />
+        </Suspense>
+        <Suspense fallback={<div className="h-96" aria-hidden="true" />}>
+          <TechStack />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={<div className="h-48" aria-hidden="true" />}>
+        <Footer />
+      </Suspense>
       <SpeedInsights />
       <Analytics />
     </div>

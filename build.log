@@ -1,0 +1,42 @@
+
+> @imsawiq/rinthy-website@1.0.0 build
+> tsc && vite build
+
+[36mvite v8.0.10 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...✓ 1868 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             1.31 kB │ gzip:  0.61 kB
+dist/assets/index-Dhp1CHr3.css             21.24 kB │ gzip:  4.75 kB
+dist/assets/rolldown-runtime-BYbx6iT9.js    0.82 kB │ gzip:  0.47 kB
+dist/assets/TechStack-B2Yf_VmH.js           1.73 kB │ gzip:  0.87 kB
+dist/assets/Footer-DAorbB--.js              1.97 kB │ gzip:  0.80 kB
+dist/assets/Features-r2J1lami.js            2.33 kB │ gzip:  1.02 kB
+dist/assets/Steps-DS8Ma8pf.js               2.37 kB │ gzip:  0.97 kB
+dist/assets/Screenshots-CuBHpxpC.js         5.10 kB │ gzip:  1.63 kB
+dist/assets/icons-2P8jgOeg.js              12.54 kB │ gzip:  5.18 kB
+dist/assets/index-DwGF6BSe.js              24.88 kB │ gzip:  8.18 kB
+dist/assets/motion-BKjM2NL4.js            114.83 kB │ gzip: 37.99 kB
+dist/assets/vendor-9i6jt_du.js            132.87 kB │ gzip: 43.12 kB
+
+[32m✓ built in 2.52s[39m
+
+✨ [vite-plugin-compression]:algorithm=brotliCompress - compressed file successfully: 
+dist/C:/Github/rinthy-website/assets/Footer-DAorbB--.js.br        1.93kb / brotliCompress: 0.67kb
+dist/C:/Github/rinthy-website/assets/Features-r2J1lami.js.br      2.28kb / brotliCompress: 0.88kb
+dist/C:/Github/rinthy-website/assets/Steps-DS8Ma8pf.js.br         2.32kb / brotliCompress: 0.83kb
+dist/C:/Github/rinthy-website/assets/Screenshots-CuBHpxpC.js.br   4.99kb / brotliCompress: 1.42kb
+dist/C:/Github/rinthy-website/assets/icons-2P8jgOeg.js.br         12.25kb / brotliCompress: 4.41kb
+dist/C:/Github/rinthy-website/assets/TechStack-B2Yf_VmH.js.br     1.70kb / brotliCompress: 0.75kb
+dist/C:/Github/rinthy-website/assets/index-DwGF6BSe.js.br         24.30kb / brotliCompress: 6.76kb
+dist/C:/Github/rinthy-website/index.html.br                       1.28kb / brotliCompress: 0.39kb
+dist/C:/Github/rinthy-website/assets/index-Dhp1CHr3.css.br        20.75kb / brotliCompress: 4.01kb
+dist/C:/Github/rinthy-website/assets/motion-BKjM2NL4.js.br        112.14kb / brotliCompress: 32.78kb
+dist/C:/Github/rinthy-website/assets/vendor-9i6jt_du.js.br        129.76kb / brotliCompress: 36.50kb
+
+
+
+✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+
+
+SUCCESS  

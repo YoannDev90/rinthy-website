@@ -1,29 +1,29 @@
 import { motion } from "framer-motion";
 import { Github, Heart, ExternalLink } from "lucide-react";
 import { useI18n } from "../i18n/I18nContext";
+import { usePerformanceProfile } from "../hooks/usePerformanceProfile";
 
 export default function Footer() {
   const { t } = useI18n();
-  return (
+  const { enableAnimations } = usePerformanceProfile();
 
+  return (
     <footer className="relative border-t border-modrinth-border py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={enableAnimations ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: enableAnimations ? 0.7 : 0.01, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col md:flex-row items-center justify-between gap-8"
         >
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl flex items-center justify-center">
-<img src="/logo.png" alt="Rinthy" className="w-5 h-5" />
-
+              <img src="/logo.png" alt="Rinthy" className="w-5 h-5" />
             </div>
             <div>
               <span className="font-display font-bold text-lg">Rinthy</span>
               <p className="text-xs text-modrinth-muted">{t.footer.tagline}</p>
-
             </div>
           </div>
 
@@ -46,7 +46,6 @@ export default function Footer() {
               <ExternalLink size={15} />
               Discord
             </a>
-
           </div>
         </motion.div>
 
@@ -57,9 +56,9 @@ export default function Footer() {
           <p>
             {t.footer.disclaimer}
           </p>
-
         </div>
       </div>
     </footer>
   );
 }
+
