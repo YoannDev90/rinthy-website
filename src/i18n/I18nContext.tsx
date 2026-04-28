@@ -6,7 +6,6 @@ interface I18nContextValue {
   lang: Language;
   setLang: (lang: Language) => void;
   t: Translations;
-  isLoading: boolean;
 }
 
 const I18nContext = createContext<I18nContextValue | undefined>(undefined);
@@ -21,7 +20,6 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   });
 
   const [t, setT] = useState<Translations>(allTranslations[lang]);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setT(allTranslations[lang]);
@@ -35,7 +33,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <I18nContext.Provider value={{ lang, setLang: changeLang, t, isLoading }}>
+    <I18nContext.Provider value={{ lang, setLang: changeLang, t }}>
       {children}
     </I18nContext.Provider>
   );
