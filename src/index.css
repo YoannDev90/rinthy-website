@@ -28,6 +28,10 @@
 }
 
 @layer utilities {
+  /* GPU acceleration for animated elements */
+  .will-change-transform { will-change: transform; }
+  .will-change-opacity { will-change: opacity, transform; }
+
   .text-gradient {
     background: linear-gradient(135deg, #1BD96A 0%, #14b853 50%, #0D0D0D 100%);
     -webkit-background-clip: text;

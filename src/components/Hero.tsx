@@ -7,9 +7,9 @@ export default function Hero() {
   const { t } = useI18n();
   const { enableAnimations, enableGlows } = usePerformanceProfile();
 
-  const fadeUp = enableAnimations
-    ? { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } }
-    : { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } };
+  const fadeUpAnim = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } };
+  const fadeUp = enableAnimations ? fadeUpAnim : { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } };
+
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 px-6 overflow-hidden">
@@ -17,7 +17,8 @@ export default function Hero() {
         <div className="space-y-6 xs:space-y-7 sm:space-y-8 z-10">
           <motion.div
             {...fadeUp}
-            transition={{ duration: enableAnimations ? 0.8 : 0.01, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: enableAnimations ? 0.6 : 0.01, ease: [0.22, 1, 0.36, 1] }}
+
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-medium text-modrinth-green tracking-wide uppercase touch-manipulation"
           >
             <span className="w-2 h-2 rounded-full bg-modrinth-green animate-pulse" />
@@ -26,7 +27,8 @@ export default function Hero() {
 
           <motion.h1
             {...fadeUp}
-            transition={{ duration: enableAnimations ? 0.8 : 0.01, delay: enableAnimations ? 0.1 : 0, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: enableAnimations ? 0.6 : 0.01, delay: enableAnimations ? 0.05 : 0, ease: [0.22, 1, 0.36, 1] }}
+
             className="font-display font-bold text-4xl xs:text-5xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight"
           >
             {t.hero.title}
@@ -36,7 +38,8 @@ export default function Hero() {
 
           <motion.p
             {...fadeUp}
-            transition={{ duration: enableAnimations ? 0.8 : 0.01, delay: enableAnimations ? 0.2 : 0, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: enableAnimations ? 0.6 : 0.01, delay: enableAnimations ? 0.1 : 0, ease: [0.22, 1, 0.36, 1] }}
+
             className="text-lg text-modrinth-muted max-w-lg leading-relaxed"
           >
             {t.hero.description}

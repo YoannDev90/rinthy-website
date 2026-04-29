@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Github, MessageCircle } from "lucide-react";
 import { useI18n } from "../i18n/I18nContext";
@@ -11,17 +11,26 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { enableAnimations, enableBlur } = usePerformanceProfile();
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { label: t.nav.features, href: "#features" },
     { label: t.nav.screenshots, href: "#screenshots" },
     { label: t.nav.howItWorks, href: "#how-it-works" },
     { label: t.nav.tech, href: "#tech" },
-  ];
+  ], [t.nav]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    let rafId: number;
+    const onScroll = () => {
+      rafId && cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 40);
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      rafId && cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const glassClass = enableBlur
@@ -84,7 +93,7 @@ export default function Navbar() {
 
         <button
           className="md:hidden p-3 min-h-[44px] min-w-[44px] flex items-center justify-center"
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={useCallback(() => setMobileOpen((prev) => !prev), [])}
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
