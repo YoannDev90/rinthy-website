@@ -39,7 +39,7 @@ It helps you manage your projects and check analytics right from your phone.
 
 - Node.js
 - npm
-- CMD
+- Vite
 
 ### Install
 
@@ -146,7 +146,7 @@ Ti permette di gestire i tuoi progetti e controllare le analitiche direttamente 
 ### Requisiti
 
 - Node.js
-
+- Vite
 ### Installazione
 
 ```bash
