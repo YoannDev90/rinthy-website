@@ -7,4 +7,3 @@
 
 export type { Language, Translations } from "./types";
 export { allTranslations as translations } from "./languages";
-

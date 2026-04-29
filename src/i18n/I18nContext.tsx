@@ -1,15 +1,12 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 import type { Language, Translations } from "./types";
 import { allTranslations } from "./languages";
-
-type TranslationValue = Translations;
 
 interface I18nContextValue {
   lang: Language;
   setLang: (lang: Language) => void;
-  t: TranslationValue;
+  t: Translations;
 }
-
 
 const I18nContext = createContext<I18nContextValue | undefined>(undefined);
 
@@ -22,6 +19,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     }
   });
 
+  const [t, setT] = useState<Translations>(allTranslations[lang]);
+
+  useEffect(() => {
+    setT(allTranslations[lang]);
+  }, [lang]);
+
   const changeLang = useCallback((newLang: Language) => {
     setLang(newLang);
     try {
@@ -30,7 +33,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <I18nContext.Provider value={{ lang, setLang: changeLang, t: allTranslations[lang] }}>
+    <I18nContext.Provider value={{ lang, setLang: changeLang, t }}>
       {children}
     </I18nContext.Provider>
   );
