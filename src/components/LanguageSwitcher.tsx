@@ -5,6 +5,7 @@ const languages: { code: Language; label: string }[] = [
   { code: "en", label: "EN" },
   { code: "ru", label: "RU" },
   { code: "it", label: "IT" },
+  { code: "fr", label: "FR" },
 ];
 
 export default function LanguageSwitcher() {

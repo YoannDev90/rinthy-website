@@ -3,7 +3,7 @@
 //  Add new language codes here when creating a new language file
 // ============================================================
 
-export type Language = "en" | "ru" | "it";
+export type Language = "en" | "ru" | "it" | "fr";
 
 export interface FeatureItem {
   title: string;
@@ -89,4 +89,3 @@ export interface Translations {
     joinDiscord: string;
   };
 }
-
