@@ -36,6 +36,7 @@ Thank you for your interest in contributing to Rinthy! This document will help y
 5. Commit with a clear message (`git commit -m "Add feature X"`).
 6. **Push** to your fork (`git push origin feature/my-feature`).
 7. Open a **Pull Request** with a description of your changes.
+8. Agree to the [CLA](https://github.com/EmanuelPlays/rinthy-website/blob/main/.github/CLA.md)
 
 ## Development Setup
 
