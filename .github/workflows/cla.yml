@@ -52,5 +52,5 @@ jobs:
                 body: claMessage
               });
               
-              core.setFailed('CLA not signed. Please comment "I agree to sign the CLA" to sign the Contributor License Agreement.');
+              core.setFailed('CLA not signed. Please comment "I have read the CLA Document and I hereby sign the CLA" to sign the Contributor License Agreement.');
             }
