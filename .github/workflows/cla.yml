@@ -33,7 +33,7 @@ jobs:
             
             const signed = comments.some(c => 
               c.user.type === 'User' && 
-              c.body.toLowerCase().includes('i agree to sign the CLA')
+              c.body.toLowerCase().includes('I agree to sign the CLA')
             );
             
             if (!signed) {
