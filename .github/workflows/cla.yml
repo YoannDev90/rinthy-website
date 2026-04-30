@@ -33,7 +33,7 @@ jobs:
             
             const signed = comments.some(c => 
               c.user.type === 'User' && 
-              c.body.toLowerCase().includes('I agree to sign the CLA')
+              c.body.toLowerCase().includes('I have read the CLA Document and I hereby sign the CLA')
             );
             
             if (!signed) {
@@ -43,7 +43,8 @@ jobs:
                 "1. **Original Work**: I confirm that my contributions are original work.\n" +
                 "2. **Copyright Assignment**: I assign copyright to the project maintainers.\n" +
                 "3. **MIT License**: All contributions will be licensed under MIT.\n\n" +
-                "**Please comment \"I agree to sign the CLA\" to sign the CLA.**\n\n" +
+                "**Please comment \"I have read the CLA Document and I hereby sign the CLA\" to sign the CLA.**\n\n" +
+                "**CLA Document**: CLA Document is located at: [docs/CLA-Agreement.md](https://github.com/EmanuelPlays/rinthy-website/blob/main/docs/CLA-Agreement.md)\n\n" +
                 "*For more info: https://github.com/imsawiq/Rinthy*";
 
               await github.rest.issues.createComment({
