@@ -20,7 +20,7 @@ By signing this CLA, you agree to the following terms:
 
 ## How to Sign
 
-To sign this CLA, simply comment "I agree" on this pull request.
+To sign this CLA, simply comment "I agree to sign the CLA" on this pull request.
 
 ## Project Attribution
 
