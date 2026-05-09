@@ -97,7 +97,15 @@ export const ru: Translations = {
       button: "Скоро",
     },
   },
+  shutdown: {
+    navButtonTitle: "Отключение",
+    navButtonPrefix: "Отключение через :",
+    sectionPill: "Отключение",
+    sectionHeadlineDone: "Месяц завершён.",
+    sectionHeadlinePending: "Обратный отсчёт до отключения сайта (время Италии):",
+  },
   footer: {
+
     tagline: "Неофициальное приложение Modrinth",
     madeWith: "Сделано",
     madeBy: "EmanuelPlays, Rinthy не принадлежит EmanuelPlays",

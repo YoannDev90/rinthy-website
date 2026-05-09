@@ -58,6 +58,7 @@ export default function OneMonthCountdownSection() {
   const { enableAnimations } = usePerformanceProfile();
   const { t } = useI18n();
 
+
   const romeNow = useItalianNow();
 
   // “1 month” countdown anchor (synced with navbar) stored in localStorage.
@@ -96,11 +97,10 @@ export default function OneMonthCountdownSection() {
 
   const headline = useMemo(
     () =>
-      isDone
-        ? "The month is over."
-        : "Countdown to website shutdown (Italy time):",
-    [isDone]
+      isDone ? t.shutdown.sectionHeadlineDone : t.shutdown.sectionHeadlinePending,
+    [isDone, t.shutdown.sectionHeadlineDone, t.shutdown.sectionHeadlinePending]
   );
+
 
   return (
     <section id="one-month" className="relative py-24 px-6">
@@ -113,8 +113,9 @@ export default function OneMonthCountdownSection() {
           className="text-center mb-10"
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass text-xs font-medium text-red-500 tracking-wide uppercase mb-5">
-            Shutdown
+            {t.shutdown.sectionPill}
           </span>
+
           <h2 className="font-display font-bold text-4xl sm:text-5xl mb-5">{headline}</h2>
           <p className="text-modrinth-muted max-w-xl mx-auto text-lg">
           </p>
