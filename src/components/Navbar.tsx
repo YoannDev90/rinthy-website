@@ -110,6 +110,7 @@ export default function Navbar() {
           className="md:hidden p-3 min-h-[44px] min-w-[44px] flex items-center justify-center"
           onClick={useCallback(() => setMobileOpen((prev) => !prev), [])}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen ? true : false}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
