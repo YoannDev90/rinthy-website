@@ -97,6 +97,13 @@ export const it: Translations = {
       button: "In Arrivo",
     },
   },
+  shutdown: {
+    navButtonTitle: "Shutdown",
+    navButtonPrefix: "Shutdown tra:",
+    sectionPill: "Shutdown",
+    sectionHeadlineDone: "Il mese è finito.",
+    sectionHeadlinePending: "Countdown per lo shutdown del sito (ora italiana):",
+  },
   footer: {
     tagline: "App non ufficiale Modrinth",
     madeWith: "Fatto con",
@@ -106,4 +113,5 @@ export const it: Translations = {
     joinDiscord: "Discord",
   },
 };
+
 

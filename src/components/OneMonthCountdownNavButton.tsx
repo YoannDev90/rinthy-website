@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { usePerformanceProfile } from "../hooks/usePerformanceProfile";
+import { useI18n } from "../i18n/I18nContext";
+
 
 function useItalianNow() {
   const [now, setNow] = useState(() => new Date());
@@ -61,6 +63,8 @@ function getOrCreateTargetMs(romeNowMs: number) {
 
 export default function OneMonthCountdownNavButton({ onJump }: { onJump: () => void }) {
   const { enableAnimations } = usePerformanceProfile();
+  const { t } = useI18n();
+
   const romeNow = useItalianNow();
 
   const targetMs = useMemo(() => {
@@ -72,7 +76,11 @@ export default function OneMonthCountdownNavButton({ onJump }: { onJump: () => v
     return formatRemaining(targetMs - romeNow.getTime());
   }, [targetMs, romeNow]);
 
+
+
+
   const badge = useMemo(() => {
+
     return `${remaining.days}d ${String(remaining.hours).padStart(2, "0")}h`;
   }, [remaining.days, remaining.hours]);
 
@@ -81,13 +89,15 @@ export default function OneMonthCountdownNavButton({ onJump }: { onJump: () => v
       type="button"
       onClick={onJump}
       className="px-4 py-2 rounded-lg border border-red-500/50 bg-red-500/5 hover:border-red-500 hover:bg-red-500/10 transition-all duration-300 text-red-400 text-sm touch-manipulation flex items-center gap-2"
-      aria-label="1 month"
-      title="Shutdown"
+      aria-label={t.shutdown.navButtonTitle}
+      title={t.shutdown.navButtonTitle}
       initial={enableAnimations ? { opacity: 0, y: 6 } : undefined}
       animate={enableAnimations ? { opacity: 1, y: 0 } : undefined}
       transition={{ duration: enableAnimations ? 0.35 : 0.01 }}
     >
-      <span>Shutdown in:</span>
+      <span>{t.shutdown.navButtonPrefix}</span>
+
+
       <span className="shrink-0 rounded-xl px-2 py-1 text-xs border border-white/10 bg-black/20 text-white/90">
         {badge}
       </span>

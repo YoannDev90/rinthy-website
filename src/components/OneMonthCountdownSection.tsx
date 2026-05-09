@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { usePerformanceProfile } from "../hooks/usePerformanceProfile";
+import { useI18n } from "../i18n/I18nContext";
+
 
 function useItalianNow() {
   const [now, setNow] = useState(() => new Date());
@@ -54,6 +56,8 @@ function formatRemaining(ms: number) {
 
 export default function OneMonthCountdownSection() {
   const { enableAnimations } = usePerformanceProfile();
+  const { t } = useI18n();
+
   const romeNow = useItalianNow();
 
   // “1 month” countdown anchor (synced with navbar) stored in localStorage.

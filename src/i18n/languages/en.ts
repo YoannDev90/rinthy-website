@@ -96,8 +96,16 @@ export const en: Translations = {
       button: "Coming Soon",
     },
   },
+  shutdown: {
+    navButtonTitle: "Shutdown",
+    navButtonPrefix: "Shutdown in:",
+    sectionPill: "Shutdown",
+    sectionHeadlineDone: "The month is over.",
+    sectionHeadlinePending: "Countdown to website shutdown (Italy time):",
+  },
   footer: {
     tagline: "Unofficial Modrinth app",
+
     madeWith: "Made with",
     madeBy: "by EmanuelPlays, Rinthy is not owned by EmanuelPlays",
     disclaimer: "Not affiliated with or endorsed by Modrinth.",
@@ -105,4 +113,5 @@ export const en: Translations = {
     joinDiscord: "Join Discord",
   },
 };
+
 

@@ -80,6 +80,14 @@ export interface Translations {
       button: string;
     };
   };
+  shutdown: {
+    navButtonTitle: string;
+    navButtonPrefix: string;
+    sectionPill: string;
+    sectionHeadlineDone: string;
+    sectionHeadlinePending: string;
+  };
+
   footer: {
     tagline: string;
     madeWith: string;
@@ -89,3 +97,5 @@ export interface Translations {
     joinDiscord: string;
   };
 }
+
+
