@@ -4,8 +4,10 @@ import { Menu, X, Github, MessageCircle } from "lucide-react";
 import { useI18n } from "../i18n/I18nContext";
 import { usePerformanceProfile } from "../hooks/usePerformanceProfile";
 import LanguageSwitcher from "./LanguageSwitcher";
+import OneMonthCountdownNavButton from "./OneMonthCountdownNavButton";
 
 export default function Navbar() {
+
   const { t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -46,7 +48,9 @@ export default function Navbar() {
       initial={enableAnimations ? { y: -80 } : { y: 0 }}
       animate={{ y: 0 }}
       transition={{ duration: enableAnimations ? 0.6 : 0.01, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${glassClass}`}
+      className={`fixed top-0 left-0 right-0 z-50 ${glassClass}`} 
+      style={{ willChange: "transform" }}
+
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2.5 group">
@@ -88,6 +92,17 @@ export default function Navbar() {
             <MessageCircle size={16} />
             <span>{t.nav.discord}</span>
           </a>
+          <OneMonthCountdownNavButton
+            onJump={() => {
+              const el = document.getElementById("one-month");
+              if (!el) return;
+              const top = el.getBoundingClientRect().top + window.scrollY - 96;
+              window.scrollTo({ top, behavior: "smooth" });
+            }}
+          />
+
+
+
           <LanguageSwitcher />
         </div>
 

@@ -44,7 +44,7 @@ PATs are an alternativelogin method.
 
 - PATs are stored locally on your device
 - Store them securely — never share your PAT
-- If compromised, revoke immediately at [Modrinth Settings](https://modrinth.com/settings/pats)
+- If compromised, revoke immediately in the [Modrinth Settings](https://modrinth.com/settings/pats)
 
 ### Permissions
 
@@ -140,4 +140,3 @@ Release builds use **ProGuard** to:
 
 - Authentication tokens are stored using Android's EncryptedSharedPreferences
 - Keys are generated per-device
-
